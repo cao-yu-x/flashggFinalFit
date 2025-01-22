@@ -57,6 +57,54 @@ globalReplacementMap["tutorial"]["catRVMap"]["EEEB_highR9lowR9"] = "EEEB_highR9l
 globalReplacementMap["tutorial"]["catRVMap"]["EEEB_lowR9highR9"] = "EEEB_lowR9highR9"
 globalReplacementMap["tutorial"]["catRVMap"]["EEEE_incl"] = "EEEE_incl"
 
+globalReplacementMap['test'] = od()
+globalReplacementMap['test']['procWV'] = "ggH"
+globalReplacementMap['test']['catWV'] = "BLL"
+
+globalReplacementMap['test']['procRVMap'] = od()
+# globalReplacementMap['test']['procRVMap']['ggH'] = "ggH"
+# globalReplacementMap['test']['procRVMap']['ggHH'] = "ggHH"
+# globalReplacementMap['test']['procRVMap']['VBFH'] = "VBFH"
+# globalReplacementMap['test']['procRVMap']['ttH'] = "ttH"
+# globalReplacementMap['test']['procRVMap']['VH'] = "VH"
+# globalReplacementMap['test']['procRVMap']['VBFHH'] = "VBFHH"
+globalReplacementMap['test']['procRVMap']['ALL'] = "ttH"
+globalReplacementMap['test']['procRVMap']['ALH'] = "ttH"
+globalReplacementMap['test']['procRVMap']['AHL'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH1'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH2'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH3'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH4'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH5'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH11'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH12'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH21'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['AHH22'] = "ggHH"
+globalReplacementMap['test']['procRVMap']['BLL'] = "ttH"
+globalReplacementMap['test']['procRVMap']['BLH'] = "ttH"
+globalReplacementMap['test']['procRVMap']['BHL'] = "VH"
+globalReplacementMap['test']['procRVMap']['BHH'] = "ggHH"
+
+globalReplacementMap['test']['catRVMap'] = od()
+globalReplacementMap['test']['catRVMap']['ALL'] = "ALL"
+globalReplacementMap['test']['catRVMap']['ALH'] = "ALH"
+globalReplacementMap['test']['catRVMap']['AHL'] = "AHL"
+globalReplacementMap['test']['catRVMap']['AHH'] = "AHH"
+globalReplacementMap['test']['catRVMap']['AHH1'] = "AHH1"
+globalReplacementMap['test']['catRVMap']['AHH2'] = "AHH2"
+globalReplacementMap['test']['catRVMap']['AHH3'] = "AHH3"
+globalReplacementMap['test']['catRVMap']['AHH4'] = "AHH4"
+globalReplacementMap['test']['catRVMap']['AHH5'] = "AHH5"
+globalReplacementMap['test']['catRVMap']['AHH11'] = "AHH11"
+globalReplacementMap['test']['catRVMap']['AHH12'] = "AHH12"
+globalReplacementMap['test']['catRVMap']['AHH21'] = "AHH21"
+globalReplacementMap['test']['catRVMap']['AHH22'] = "AHH22"
+globalReplacementMap['test']['catRVMap']['BLL'] = "BLL"
+globalReplacementMap['test']['catRVMap']['BLH'] = "BLH"
+globalReplacementMap['test']['catRVMap']['BHL'] = "BHL"
+globalReplacementMap['test']['catRVMap']['BHH'] = "BHH"
+
 
 # STXS analysis
 globalReplacementMap['STXS'] = od()

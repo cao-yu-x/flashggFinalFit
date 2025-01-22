@@ -1,6 +1,14 @@
 models = {
   "mu_inclusive":"",
 
+  "HH":"-P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
+--PO \"map=.*/ggHH_.*:r_ggHH[1,0,10]\" \
+--PO \"map=.*/ggH_.*:r[1,0,2]\" \
+--PO \"map=.*/VBFH_.*:r[1,0,2]\" \
+--PO \"map=.*/ttH_.*:r[1,0,2]\" \
+--PO \"map=.*/VH_.*:r[1,0,2]\" \
+--PO \"map=.*/VBFHH_.*:r[1,0,2]\"",
+
   "mu_ggH_VBF":"-P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
 --PO \"map=.*/ggH.*:r_ggH[1,0,3]\" \
 --PO \"map=.*/qqH.*:r_VBF[1,0,5]\"",

@@ -36,4 +36,33 @@ AutoDict_*
 
 # Output dirs in signal and bkg
 Signal/outdir_*
+Signal/log
+Signal/bak*
 Background/outdir_*
+Background/log
+Background/bin
+Datacard/yield*
+Datacard/Datacard*
+Datacard/old
+Plots/plots*
+Plots/SplusB*
+Tree2WS/inputs
+Tree2WS/outdir*
+Combine/Datacards
+Combine/Models*
+Combine/log
+Combine/plot
+Combine/WS
+Combine/result
+Combine/higgsCombine*
+Combine/*.png
+Combine/*.pdf
+Combine/*.root
+Combine/error
+Combine/t2w*
+Combine/script
+
+
+./*.root
+./*.png
+./*.pdf

@@ -17,7 +17,7 @@ def get_options():
   parser.add_option('--years', dest='years', default='2022preEE,2022postEE', help="Comma separated list of years in makeYields output")
   # For pruning processes
   parser.add_option('--prune', dest='prune', default=False, action="store_true", help="Prune proc x cat which make up less than pruneThreshold (default 0.1%) of given total category")
-  parser.add_option('--pruneThreshold', dest='pruneThreshold', default=0.001, type='float', help="Threshold with which to prune proc x cat as fraction of total category yield (default=0.1%)")
+  parser.add_option('--pruneThreshold', dest='pruneThreshold', default=0.00001, type='float', help="Threshold with which to prune proc x cat as fraction of total category yield (default=0.1%)")
   parser.add_option('--doTrueYield', dest='doTrueYield', default=False, action="store_true", help="For pruning: use true number of expected events for proc x cat i.e. Product(XS,BR,eff*acc,lumi). If false then will just use sum of weights (= eff x acc)")
   parser.add_option('--mass', dest='mass', default='125', help="MH mass: required for doTrueYield")
   parser.add_option('--analysis', dest='analysis', default='tutorial', help="Analysis extension: required for doTrueYield (see ./tools/XSBR.py for example)")
@@ -30,8 +30,11 @@ def get_options():
   # For output
   parser.add_option('--saveDataFrame', dest='saveDataFrame', default=False, action="store_true", help='Save final dataframe as pkl file') 
   parser.add_option('--output', dest='output', default='Datacard', help='Datacard name') 
+  parser.add_option('--HH', dest='HH', default=False, action="store_true", help='only set HH as signal')
   return parser.parse_args()
 (opt,args) = get_options()
+if opt.ext != '':
+  opt.analysis = opt.ext
 
 def leave():
   print(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HGG DATACARD MAKER RUN II (END) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ")
@@ -141,7 +144,23 @@ if opt.prune:
   # Finally set all NOTAG events to be pruned
   mask = data['cat'].str.contains("NOTAG")
   data.loc[mask,'prune'] = 1
-    
+if opt.doTrueYield:
+    print(" --> Using the true yield of process for pruning: N = Product(XS,BR,eff*acc,lumi)")
+    mask = (data['type']=='sig')
+
+    # Extract XS*BR using tools.XSBR
+    data['xsbr'] = '-'
+    from tools.XSBR import *
+    XSBR = extractXSBR(data,mass=opt.mass,analysis=opt.analysis)
+    data.loc[mask,'xsbr'] = data[mask].apply(lambda x: XSBR["XS_%s"%x['procOriginal']]*XSBR['BR'], axis=1)
+
+    # Extract eff*acc using total proc yield: strictly should include NOTAG
+    data['ea'] = '-'
+    # In HiggsDNA the sumw = eff*acc
+    data.loc[mask,'ea'] = data.loc[mask,'nominal_yield']
+
+    # Calculate true yield
+    data.loc[mask,'true_yield'] = data[mask].apply(lambda x: x['xsbr']*x['ea']*x['rate'], axis=1)  
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SAVE DATAFRAME
 if opt.saveDataFrame:

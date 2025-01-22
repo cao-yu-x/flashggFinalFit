@@ -72,14 +72,24 @@ def signalFromFileName(_fileName):
     if "ZToLL" in _fileName: d = "_ZToLL"
     elif "ZToNuNu" in _fileName: d = "_ZToNuNu"
     else: d = "_ZToQQ"
-  elif "GluGlu" in _fileName: p = "ggh"
-  elif "VBF" in _fileName: p = "vbf"
-  elif "WH" in _fileName: p = "wh"
-  elif "ZH" in _fileName: p = "zh"
-  elif "ttH" in _fileName: p = "tth"
-  elif "THQ" in _fileName: p = "thq"
-  elif "THW" in _fileName: p = "thw"
-  elif "bbH" in _fileName: p = "bbh"
+  elif "ggH_" in _fileName: p = "ggH"
+  elif "VBFH_" in _fileName: p = "VBFH"
+  elif "ttH" in _fileName: p = "ttH"
+  elif "ggHH_M" in _fileName: p = "ggHH"
+  elif "ggHH-kl0" in _fileName: p = "ggHH-kl0"
+  elif "ggHH-kl2p45" in _fileName: p = "ggHH-kl2p45"
+  elif "ggHH-kl5" in _fileName: p = "ggHH-kl5"
+  elif "VBFHH" in _fileName: p = "VBFHH"
+  elif "VH" in _fileName: p = "VH"
+  elif "_M" in _fileName: p = _fileName.split("_M")[0].split("output_")[1]
+  # elif "GluGlu" in _fileName: p = "ggh"
+  # elif "VBF" in _fileName: p = "vbf"
+  # elif "WH" in _fileName: p = "wh"
+  # elif "ZH" in _fileName: p = "zh"
+  # elif "ttH" in _fileName: p = "tth"
+  # elif "THQ" in _fileName: p = "thq"
+  # elif "THW" in _fileName: p = "thw"
+  # elif "bbH" in _fileName: p = "bbh"
   else:
     print(" --> [ERROR]: cannot extract production mode from input file name. Please update tools.commonTools.signalFromFileName")
     exit(1)
@@ -132,6 +142,13 @@ procToDatacardNameMap["TH"] = "tHq"
 procToDatacardNameMap["GG2HQQ"] = "ggZH_had"
 procToDatacardNameMap["GG2HLL"] = "ggZH_ll"
 procToDatacardNameMap["GG2HNUNU"] = "ggZH_nunu"
+
+procToDatacardNameMap["ggH"] = "ggH"
+procToDatacardNameMap["VBFH"] = "qqH"
+procToDatacardNameMap["ttH"] = "ttH"
+procToDatacardNameMap["VH"] = "wh"
+procToDatacardNameMap["ggHH"] = "ggHH"
+procToDatacardNameMap["VBFHH"] = "VBFHH"
 
 def procToDatacardName( _proc ):
   k = _proc.split("_")[0]

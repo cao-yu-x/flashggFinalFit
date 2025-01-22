@@ -28,6 +28,16 @@ XSBRMap['tutorial']['decay'] = {'mode':'hgg'}
 XSBRMap['tutorial']['GG2H'] = {'mode':'constant', 'factor':51.96}
 XSBRMap['tutorial']['VBF'] = {'mode':'constant', 'factor':4.067}
 
+XSBRMap['test'] = od()
+XSBRMap['test']['decay'] = {'mode':'hgg'}
+#xs pb
+XSBRMap['test']['ggH'] = {'mode':'constant', 'factor':51.96}
+XSBRMap['test']['VBFH'] = {'mode':'constant', 'factor':4.067}
+XSBRMap['test']['VH'] = {'mode':'constant', 'factor':2.378}
+XSBRMap['test']['ttH'] = {'mode':'constant', 'factor':0.5638}
+XSBRMap['test']['ggHH'] = {'mode':'constant', 'factor':0.0391}
+XSBRMap['test']['VBFHH'] = {'mode':'constant', 'factor':0.0021}
+
 # STXS analysis
 XSBRMap['STXS'] = od()
 XSBRMap['STXS']['decay'] = {'mode':'hgg'}

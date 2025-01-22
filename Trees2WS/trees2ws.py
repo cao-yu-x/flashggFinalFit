@@ -44,9 +44,9 @@ def leave():
 # Function to add vars to workspace
 def add_vars_to_workspace(_ws=None,_data=None,_stxsVar=None):
   # Add intLumi var
-  intLumi = ROOT.RooRealVar("intLumi","intLumi",1000.,0.,999999999.)
-  intLumi.setConstant(True)
-  getattr(_ws,'import')(intLumi)
+  # intLumi = ROOT.RooRealVar("intLumi","intLumi",1000.,0.,999999999.)
+  # intLumi.setConstant(True)
+  # getattr(_ws,'import')(intLumi)
   # Add vars specified by dataframe columns: skipping cat, stxsvar and type
   _vars = od()
   for var in _data.columns:

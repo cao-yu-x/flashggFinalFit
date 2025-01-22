@@ -2,11 +2,19 @@
 import os, sys
 from optparse import OptionParser
 from collections import OrderedDict as od
+import importlib.util
 
 # Import tools
 from tools.submissionTools import *
 from commonTools import *
 from commonObjects import *
+
+def load_config(config_path):
+    spec = importlib.util.spec_from_file_location("config", config_path)
+    config = importlib.util.module_from_spec(spec)
+    sys.modules["config"] = config
+    spec.loader.exec_module(config)
+    return config.backgroundScriptCfg
 
 def get_options():
   parser = OptionParser()
@@ -31,9 +39,9 @@ if opt.inputConfig != '':
   if os.path.exists( opt.inputConfig ):
 
     #copy file to have common name and then import cfg options (dict)
-    os.system("cp %s config.py"%opt.inputConfig)
-    from config import backgroundScriptCfg
-    _cfg = backgroundScriptCfg
+    # os.system("cp %s config.py"%opt.inputConfig)
+    # from config import backgroundScriptCfg
+    _cfg = load_config(opt.inputConfig)
 
     #Extract options
     options['dataFile']     = _cfg['inputWS']
@@ -51,7 +59,7 @@ if opt.inputConfig != '':
     options['printOnly']               = opt.printOnly
 
     # Delete copy of file
-    os.system("rm config.py")
+    #os.system("rm config.py")
 
   else:
     print("[ERROR] %s config file does not exist. Leaving..."%opt.inputConfig)

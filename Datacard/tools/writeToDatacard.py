@@ -16,6 +16,14 @@ def writePreamble(f,options):
 
 def writeProcesses(f,d,options):
   f.write("\n")
+  sig_ID_init = -1
+  sig_ID_digit = -1
+  if options.HH :
+    print("using HH as signal")
+    sig_ID_init = 2
+    ggHH_sig_ID_digit = 0
+    sig_ID_digit = 1
+
   # If opt.prune then remove all rows from dataFrame with prune=1
   if options.prune: d = d[d['prune']==0]
   # d = Pandas DataFrame
@@ -39,7 +47,7 @@ def writeProcesses(f,d,options):
   for cat in d.cat.unique():
     lbin_cat += "%-55s "%cat
     lobs_cat += "%-55s "%"-1"
-    sigID = 0
+    sigID = sig_ID_init
     # Loop over rows for respective category
     for ir,r in d[d['cat']==cat].iterrows():
       if r['proc'] == "data_obs": continue
@@ -47,8 +55,12 @@ def writeProcesses(f,d,options):
       lproc += "%-55s "%r['proc']
       if r['proc'] == "bkg_mass": lprocid += "%-55s "%"1"
       else:
-        lprocid += "%-55s "%sigID
-        sigID -= 1
+        if 'ggHH' in r['procOriginal']:
+          lprocid += "%-55s "%ggHH_sig_ID_digit
+          ggHH_sig_ID_digit -= 1
+        else:
+          lprocid += "%-55s "%sigID
+          sigID += sig_ID_digit
       if r['rate'] == 1.0: lrate += "%-55.1f "%r['rate']
       else: lrate += "%-55.7f "%r['rate']
   #Remove final space from lines and add to file

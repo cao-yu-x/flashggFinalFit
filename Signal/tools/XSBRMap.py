@@ -36,6 +36,20 @@ globalXSBRMap['tutorial']['decay'] = {'mode':'hgg'}
 globalXSBRMap['tutorial']['GG2H'] = {'mode':'constant', 'factor':51.96}
 globalXSBRMap['tutorial']['VBF'] = {'mode':'constant', 'factor':4.067}
 
+globalXSBRMap['test'] = od()
+globalXSBRMap['test']['decay'] = {'mode':'hgg'}
+globalXSBRMap['test']['ggH'] = {'mode':'constant', 'factor':51.96}
+globalXSBRMap['test']['VBFH'] = {'mode':'constant', 'factor':4.067}
+globalXSBRMap['test']['VH'] = {'mode':'constant', 'factor':2.378}
+globalXSBRMap['test']['ttH'] = {'mode':'constant', 'factor':0.5638}
+globalXSBRMap['test']['ggHH'] = {'mode':'constant', 'factor':0.0393}
+globalXSBRMap['test']['ggHH-kl0'] = {'mode':'constant', 'factor':0.0873}
+globalXSBRMap['test']['ggHH-kl2p45'] = {'mode':'constant', 'factor':0.0172}
+globalXSBRMap['test']['ggHH-kl5'] = {'mode':'constant', 'factor':0.1148}
+globalXSBRMap['test']['ggHH-CH-6-t0'] = {'mode':'constant', 'factor':-0.0575}
+globalXSBRMap['test']['ggHH-CH-6-t1'] = {'mode':'constant', 'factor':0.0468}
+globalXSBRMap['test']['VBFHH'] = {'mode':'constant', 'factor':0.0021}
+
 # STXS analysis: add factor for bin composition
 globalXSBRMap['STXS'] = od()
 globalXSBRMap['STXS']['decay'] = {'mode':'hgg'}
